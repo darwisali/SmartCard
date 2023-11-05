@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class RegistrasiTable extends Migration
+class RekapregistrasiTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,16 +13,17 @@ class RegistrasiTable extends Migration
      */
     public function up()
     {
-        Schema::create('registrasis', function (Blueprint $table) {
+        Schema::create('rekap_registrasis', function (Blueprint $table) {
             $table->id();
-            $table->foreignId('santri_id')->constrained('santris');
+            $table->unsignedBigInteger('santri');
+            $table->foreign('santri')
+                    ->references('id')
+                    ->on('santris');
             $table->string('semester');
-            $table->string('nominal');
             $table->string('tahun');
-            $table->date('tanggal');
             $table->string('status');
             $table->timestamps();
-        });
+            });
     }
 
     /**
@@ -32,6 +33,6 @@ class RegistrasiTable extends Migration
      */
     public function down()
     {
-        //
+        
     }
 }

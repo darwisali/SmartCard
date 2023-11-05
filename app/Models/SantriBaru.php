@@ -8,4 +8,20 @@ use Illuminate\Database\Eloquent\Model;
 class SantriBaru extends Model
 {
     use HasFactory;
+
+    protected $fillable = [
+        'nis',
+        'uid',
+        'nama',
+        'status',
+        'masa_aktif',
+        'pendaftaran',
+        'infaq',
+        'posaba',
+        'kartu_santri',
+        'seragam',
+        'syahriyah',
+        'pondok',
+        'diniyah'
+    ];
 }

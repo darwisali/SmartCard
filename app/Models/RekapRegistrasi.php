@@ -5,14 +5,13 @@ namespace App\Models;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
 
-class Registrasi extends Model
+class RekapRegistrasi extends Model
 {
     use HasFactory;
 
     protected $fillable = [
-        'santri_id',
+        'santri',
         'semester',
-        'nominal',
         'tahun',
         'tanggal',
         'status',
@@ -21,6 +20,6 @@ class Registrasi extends Model
     protected $with = ['dataSantri'];
 
     public function dataSantri(){
-        return $this->belongsTo(Santri::class, 'santri_id');
+        return $this->belongsTo(Santri::class, 'santri');
     }
 }

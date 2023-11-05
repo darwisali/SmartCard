@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\Santri;
 use App\Models\Tabungan;
 use App\Models\RekapSyahriyah;
+use App\Models\RekapRegistrasi;
 use App\Models\Card;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -87,6 +88,8 @@ class SantriController extends Controller
                 $data = Santri::all()->count();
                 Tabungan::create(['santri'=>$data, 'saldo_awal' => 0, 'saldo' => 0]);
                 RekapSyahriyah::create(['santri'=>$data, 'bulan' => date('F'), 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
+                RekapRegistrasi::create(['santri'=>$data, 'semester' => "ganjil", 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
+                RekapRegistrasi::create(['santri'=>$data, 'semester' => "genap", 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
                 Card::truncate();
                 Alert::success('Success', 'Data Santri Berhasil Ditambahkan');
                 return redirect()->route('santri.index');

@@ -69,7 +69,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('registrasi.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-cash"></i>
                 </span>
@@ -77,7 +77,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="./ui-typography.html" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('santribaru.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-cash"></i>
                 </span>
@@ -96,7 +96,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{ route('rekapsyahriyah.index')}}" aria-expanded="false">
+              <a class="sidebar-link" href="{{ route('rekapregistrasi.index')}}" aria-expanded="false">
                 <span>
                   <i class="ti ti-cash"></i>
                 </span>
