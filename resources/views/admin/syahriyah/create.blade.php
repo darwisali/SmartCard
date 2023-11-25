@@ -9,12 +9,6 @@
               <div class="card">
                 <div class="card-body">
                   <form method="post" action="{{route('syahriyah.store')}}">
-                        @php
-                          function rupiah($angka){
-                            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-                            return $hasil_rupiah;
-                          }
-                        @endphp
                     @csrf
                     <input type="text" name="santri_id" value="{{$data->id}}" hidden>
                     <div class="mb-3">
@@ -32,12 +26,13 @@
                     </div>
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Saldo Tabungan</label>
-                      <input type="text" value="{{rupiah($saldo)}}" class="form-control" id="exampleInputPassword1" readonly>
+                      <input type="text" value="{{$saldo}}" class="form-control" id="exampleInputPassword1" readonly>
                     </div>
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Type</label>
-                        <input type="text" value="{{$data->status}}" name="type" class="form-control" id="exampleInputPassword1" readonly>
+                        <input type="text" value="{{$data->k_status->nama}} - {{$data->k_status->syahriyah + $data->k_status->pondok + $data->k_status->diniyah}}" class="form-control" id="exampleInputPassword1" readonly>
                     </div>
+                    <input type="text" name="type" value="{{$data->k_status->syahriyah + $data->k_status->pondok + $data->k_status->diniyah}}" hidden>
                       <div class="mb-3">
                         <label for="exampleInputEmail1" class="form-label">Bulan</label>
                         <select name="bulan" class="form-control">

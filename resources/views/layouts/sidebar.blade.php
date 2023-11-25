@@ -36,6 +36,14 @@
                 <span class="hide-menu">Data Santri</span>
               </a>
             </li>
+            <li class="sidebar-item">
+              <a class="sidebar-link" href="{{route('kategoristatus.index')}}" aria-expanded="false">
+                <span>
+                  <i class="ti ti-article"></i>
+                </span>
+                <span class="hide-menu">Kategori Status</span>
+              </a>
+            </li>
             <li class="nav-small-cap">
               <i class="ti ti-dots nav-small-cap-icon fs-4"></i>
               <span class="hide-menu">SIMPANAN</span>
@@ -104,7 +112,7 @@
               </a>
             </li>
             <li class="sidebar-item">
-              <a class="sidebar-link" href="{{ route('rekapsyahriyah.index')}}" aria-expanded="false">
+              <a class="sidebar-link" href="#" aria-expanded="false">
                 <span>
                   <i class="ti ti-cash"></i>
                 </span>

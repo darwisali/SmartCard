@@ -47,10 +47,9 @@
                         <label for="exampleInputEmail1" class="form-label">Status</label>
                         <select name="status" class="form-control">
                             <option value="">Pilih Status</option>
-                            <option value="250000">Normal - Rp. 250.000</option>
-                            <option value="210000">Saudara - Rp. 210.000</option>
-                            <option value="125000">Kembar- Rp. 125.000</option>
-                            <option value="45000">Yatim- Rp. 45.000</option>
+                            @foreach($kategori as $k)
+                            <option value="{{ $k->id }}">{{ $k->nama }}</option>
+                            @endforeach
                         </select>
                         @error('type')
                             <span class="text-danger">{{$message}}</span>

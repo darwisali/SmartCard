@@ -16,4 +16,11 @@ class Santri extends Model
         'status',
         'masa_aktif'
     ];
+
+    protected $with = ['k_status'];
+
+    public function k_status()
+    {
+        return $this->belongsTo(KategoriStatus::class, 'status');
+    }
 }

@@ -1,11 +1,6 @@
 @extends('layouts.app')
 @section('contents')
-@php
-function rupiah($angka){
-$hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-return $hasil_rupiah;
-}
-@endphp
+
         <!--  Row 1 -->
         <div class="row">
           <div class="col-lg-12 d-flex align-items-strech">
@@ -35,7 +30,7 @@ return $hasil_rupiah;
                             <tr>
                                 <td><b>Status</b></td>
                                 <td><b>:</b></td>
-                                <td>{{ rupiah($data->status) }}</td>
+                                <td>{{ $data->k_status->nama }}</td>
                             </tr>
                             <tr>
                                 <td><b>Masa Aktif</b></td>
@@ -45,12 +40,30 @@ return $hasil_rupiah;
                             <tr>
                                 <td><b>Saldo</b></td>
                                 <td><b>:</b></td>
-                                <td>{{ rupiah($tabungan->saldo) }}</td>
+                                <td>{{ $tabungan->saldo }}</td>
                             </tr>
                             <tr>
                                 <td><b>Status Syahriyah Bulan Ini</b></td>
                                 <td><b>:</b></td>
                                 @if($syahriyah->status == 'Lunas' && date('F') == $syahriyah->bulan && date('Y') == $syahriyah->tahun)
+                                <td>Lunas</td>
+                                @else
+                                <td>Tidak Lunas</td>
+                                @endif
+                            </tr>
+                            <tr>
+                                <td><b>Status Registrasi Ganjil</b></td>
+                                <td><b>:</b></td>
+                                @if($ganjil->status == 'Lunas')
+                                <td>Lunas</td>
+                                @else
+                                <td>Tidak Lunas</td>
+                                @endif
+                            </tr>
+                            <tr>
+                                <td><b>Status Registrasi Genap</b></td>
+                                <td><b>:</b></td>
+                                @if($genap->status == 'Lunas')
                                 <td>Lunas</td>
                                 @else
                                 <td>Tidak Lunas</td>

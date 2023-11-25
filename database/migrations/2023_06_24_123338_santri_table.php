@@ -19,7 +19,7 @@ class SantriTable extends Migration
         $table->string('nis')->nullable();
         $table->string('uid')->nullable();
         $table->string('nama')->nullable();
-        $table->string('status')->nullable();
+        $table->foreignId('status')->contrained('kategori_statuses');
         $table->date('masa_aktif');
         $table->timestamps();
         });

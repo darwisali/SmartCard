@@ -33,7 +33,12 @@
                     </div><div class="mb-3">
                     <div class="mb-3">
                       <label for="exampleInputPassword1" class="form-label">Status</label>
-                      <input value="{{$data->status}}" type="text" name="status" class="form-control" id="exampleInputPassword1">
+                      <select name="status" class="form-control">
+                            <option value="">Pilih Status</option>
+                            @foreach($kategori as $k)
+                            <option @if($k->id == $data->status) selected @endif value="{{ $k->id }}">{{ $k->nama }}</option>
+                            @endforeach
+                      </select>
                         @error('status')
                             <span class="text-danger">{{$message}}</span>
                         @enderror

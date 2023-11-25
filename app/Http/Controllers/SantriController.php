@@ -7,6 +7,7 @@ use App\Models\Santri;
 use App\Models\Tabungan;
 use App\Models\RekapSyahriyah;
 use App\Models\RekapRegistrasi;
+use App\Models\KategoriStatus;
 use App\Models\Card;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -40,7 +41,8 @@ class SantriController extends Controller
         $uid = Card::first();
         if($uid)
         {
-            return view('admin.santri.create', compact('uid'));
+            $kategori = KategoriStatus::all();
+            return view('admin.santri.create', compact('uid','kategori'));
         }else{
             return view('admin.santri.scan');
         }
@@ -106,9 +108,11 @@ class SantriController extends Controller
     public function show($id)
     {
         $data = Santri::where('id',$id)->first();
-        $syahriyah = RekapSyahriyah::where('santri', $data->id)->first();
-        $tabungan = Tabungan::where('santri',$data->id)->first();
-        return view('admin.santri.show', compact('data', 'tabungan', 'syahriyah'));
+        $syahriyah = RekapSyahriyah::where('santri', $id)->first();
+        $ganjil = RekapRegistrasi::where(['santri' => $id, 'semester' => 'ganjil', 'tahun' => date('Y')])->first();
+        $genap = RekapRegistrasi::where(['santri' => $id, 'semester' => 'genap', 'tahun' => date('Y')])->first();
+        $tabungan = Tabungan::where('santri',$id)->first();
+        return view('admin.santri.show', compact('data', 'tabungan', 'syahriyah', 'ganjil', 'genap'));
     }
 
     /**
@@ -120,7 +124,8 @@ class SantriController extends Controller
     public function edit($id)
     {
         $data = Santri::where('id', $id)->first();
-        return view('admin.santri.edit', compact('data'));
+        $kategori = KategoriStatus::all();
+        return view('admin.santri.edit', compact('data', 'kategori'));
     }
 
     /**

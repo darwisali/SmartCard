@@ -8,6 +8,7 @@ use App\Models\SantriBaru;
 use App\Models\Tabungan;
 use App\Models\RekapSyahriyah;
 use App\Models\RekapRegistrasi;
+use App\Models\KategoriStatus;
 use App\Models\Card;
 use Validator;
 use RealRashid\SweetAlert\Facades\Alert;
@@ -42,7 +43,8 @@ class SantriBaruController extends Controller
         $uid = Card::first();
         if($uid)
         {
-            return view('admin.santribaru.create', compact('uid'));
+            $kategori = KategoriStatus::all();
+            return view('admin.santribaru.create', compact('uid', 'kategori'));
         }else{
             return view('admin.santribaru.scan');
         }
@@ -126,10 +128,11 @@ class SantriBaruController extends Controller
                 }else{
                     $data = $data;
                 }
-                Santri::create(['nis' => $request->nis, 'uid' => $request->uid, 'nama' => $request->nama, 'status' => $request->type, 'masa_aktif' => $masa_aktif]);
+                Santri::create(['nis' => $request->nis, 'uid' => $request->uid, 'nama' => $request->nama, 'status' => $request->status, 'masa_aktif' => $masa_aktif]);
                 Tabungan::create(['santri'=>$data, 'saldo_awal' => 0, 'saldo' => 0]);
                 RekapSyahriyah::create(['santri'=>$data, 'bulan' => date('F'), 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
                 RekapRegistrasi::create(['santri'=>$data, 'semester' => "genap", 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
+                RekapRegistrasi::create(['santri'=>$data, 'semester' => "ganjil", 'tahun' => date('Y'), 'status' => 'Tidak Lunas']);
                 Card::truncate();
                 Alert::success('Success', 'Data Santri Berhasil Ditambahkan');
                 return redirect()->route('santribaru.index');

@@ -55,34 +55,38 @@
                           <h6 class="fw-semibold mb-0">Diniyah</h6>
                         </th>
                         <th class="border-bottom-0">
+                          <h6 class="fw-semibold mb-0">Total Syahriah</h6>
+                        </th>
+                        <th class="border-bottom-0">
                           <h6 class="fw-semibold mb-0">Action</h6>
                         </th>
                       </tr>
                     </thead>
                     <tbody>
-                        @foreach($data as $row) 
+                        @foreach($data as $row)
                       <tr>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $no++ }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->nis }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->uid }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->nama }}</h6></td>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ "Rp " . number_format($row->status,0,',','.') }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->k_status->nama }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->masa_aktif }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->pendaftaran }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->infaq }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->posaba }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->kartu_santri }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->seragam }}</h6></td>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->syahriyah }}</h6></td>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->pondok }}</h6></td>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->diniyah }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->k_status->syahriyah }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->k_status->pondok }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->k_status->diniyah }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ "Rp " . number_format($row->k_status->syahriyah+$row->k_status->pondok+$row->k_status->diniyah) }}</h6></td>
                         <td>
                             <a type="button" class="btn btn-sm btn-success" href="{{route('santri.show', $row->id)}}"><i class="ti ti-eye"></i></a>
                             <a type="button" class="btn btn-sm btn-warning" href="{{route('santri.edit', $row->id)}}"><i class="ti ti-pencil"></i></a>
                             <button onclick="deleteItem(this)" data-id="{{ $row->id }}" class="btn btn-sm btn-danger"><i class="ti ti-trash"></i></button>
                         </td>
-                      </tr> 
-                        @endforeach                    
+                      </tr>
+                        @endforeach
                     </tbody>
                   </table>
                 </div>

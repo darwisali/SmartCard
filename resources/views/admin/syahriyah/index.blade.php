@@ -42,19 +42,14 @@
                       </tr>
                     </thead>
                     <tbody>
-                        @php
-                          function rupiah($angka){
-                            $hasil_rupiah = "Rp " . number_format($angka,2,',','.');
-                            return $hasil_rupiah;
-                          }
-                        @endphp
+                        
                         @foreach($data as $row) 
                       <tr>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $no++ }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->dataSantri->nis }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->dataSantri->uid }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->dataSantri->nama }}</h6></td>
-                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ rupiah($row->type) }}</h6></td>
+                        <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->dataSantri->k_status->nama }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->bulan }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->tahun }}</h6></td>
                         <td class="border-bottom-0"><h6 class="fw-semibold mb-0">{{ $row->tanggal }}</h6></td>

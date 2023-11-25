@@ -24,4 +24,16 @@ class SantriBaru extends Model
         'pondok',
         'diniyah'
     ];
+
+    protected $with = ['k_status'];
+
+    /**
+     * Get the user that owns the SantriBaru
+     *
+     * @return \Illuminate\Database\Eloquent\Relations\BelongsTo
+     */
+    public function k_status()
+    {
+        return $this->belongsTo(KategoriStatus::class, 'status');
+    }
 }

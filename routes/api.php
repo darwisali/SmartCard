@@ -2,7 +2,7 @@
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
-use App\Http\Controllers\{SantriController,AdminController,TabunganController,TransaksiController,SyahriyahController,RekapSyahriyahController,RekapRegistrasiController,RegistrasiController,SantriBaruController};
+use App\Http\Controllers\{SantriController,AdminController,TabunganController,TransaksiController,SyahriyahController,RekapSyahriyahController,RekapRegistrasiController,RegistrasiController,SantriBaruController,KategoriStatusController};
 
 /*
 |--------------------------------------------------------------------------
@@ -28,4 +28,5 @@ Route::resource('rekapsyahriyah', RekapSyahriyahController::class);
 Route::resource('rekapregistrasi', RekapRegistrasiController::class);
 Route::resource('registrasi', RegistrasiController::class);
 Route::resource('santribaru', SantriBaruController::class);
+Route::resource('kategoristatus', KategoriStatusController::class);
 Route::post('cards', [App\Http\Controllers\CardController::class, 'store']);
